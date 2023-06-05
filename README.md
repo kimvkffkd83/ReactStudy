@@ -29,17 +29,20 @@
 ## DB 형태
 ### TABLE
 1. snack
+
+````
 CREATE TABLE snack (
-snk_no INT NOT NULL AUTO_INCREMENT,
-snk_name VARCHAR(20) NOT NULL,
-snk_potion INT,
-snk_calorie INT,
-snk_company VARCHAR(20),
-PRIMARY KEY(snk_no)
+  snk_no INT NOT NULL AUTO_INCREMENT,
+  snk_name VARCHAR(20) NOT NULL,
+  snk_potion INT,
+  snk_calorie INT,
+  snk_company VARCHAR(20),
+  PRIMARY KEY(snk_no)
 );
 // snk_potion : 1회 제공량(g)
 // snk_calorie : 1회 제공량(g) 기준 칼로리
 // 같은 이름이지만 중량이 다른 과자를 어떻게 추가해야 할 지 고민 중
+````
 
 # Prerequisite
 - react : ^18.2.0
