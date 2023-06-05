@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require("mysql");
+const bodyParser = require("express");
 const router = express();
 
 // MySQL 연결
@@ -11,6 +12,7 @@ const db = mysql.createPool({
 });
 
 // post 요청 시 값을 객체로 바꿔줌
+router.use(bodyParser.json());
 router.use(express.urlencoded({ extended: true }))
 
 // http://localhost:4001/ 으로 접속 시 응답메시지 출력
@@ -32,7 +34,7 @@ router.get('/getSnackListAll', (req,res) =>{
     });
 })
 
-router.post('/api/getSnacksByNo', (req, res) =>{
+router.post('/getSnacksByNo', (req, res) =>{
     db.query("Select * From snack where snack_no = ",(err,data) =>{
         if(err) {
             console.log("err");
@@ -43,14 +45,13 @@ router.post('/api/getSnacksByNo', (req, res) =>{
         }
     });
 })
-
-router.post('/api/getSnacksByName', (req, res) =>{
-    db.query("Select * From snack",(err,data) =>{
+router.post('/getSnacksByName', (req, res) =>{
+    const sName = req.body.sName;
+    db.query("Select * From snack where snk_name like ?", ['%'+sName+'%'],(err,data) =>{
         if(err) {
-            console.log("err");
             res.send(err)
         }else{
-            console.log("success");
+            console.log(data)
             res.send(data)
         }
     });

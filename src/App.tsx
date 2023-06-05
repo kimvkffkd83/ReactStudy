@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import tempLogo from './img/000donut.jpg';
-import SearchBar from './SearchBar';
+import TodayTag from './TodayTag';
+import TodaySnack from './TodaySnack';
+import SearchComponent from "./SearchComponent";
 
 function App() {
     // useEffect(() => {
@@ -29,7 +30,9 @@ function App() {
                 </Navbar.Brand>
             </Container>
         </Navbar>
-        <SearchBar/>
+        <SearchComponent/>
+        <TodayTag/>
+        <TodaySnack/>
     </Container>
   );
 }
